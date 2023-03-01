@@ -7,7 +7,7 @@ import numpy as np
 st.set_page_config(page_title = 'ODYSSEY',page_icon="2.jpg", layout="wide", menu_items={
         'Get Help': 'https://www.linkedin.com/company/astroalgo',
         'Report a bug': "https://forms.gle/5hKrGPJGqs2aeHUC8",
-        'About': '''$Odyssey$ by AstroAlgo: Data-Driven Insights Into The Cosmos'''
+        'About': '''$Odyssey$ by [AstroAlgo](https://www.linkedin.com/company/astroalgo): Data-Driven Insights Into The Cosmos'''
     })
 
 def add_bg_from_url():
@@ -28,14 +28,14 @@ add_bg_from_url()
 
 # col1, col2, col3 = st.columns(3)
 # with col2:
-st.image('odyssey.png')
+st.image('ODYSSEY.png')
 
 # col1, col2, col3 = st.columns(3)
 # with col2:
 st.title('$ODYSSEY$ by AstroAlgo')
 st.subheader('Empowering Your Journey through Cosmic Data')
 st.write('''Introducing Odyssey, the ultimate app for analyzing astronomical data. Odyssey provides an intuitive and user-friendly interface for visualizing and analyzing your data. 
-         With Odyssey, you can easily create scatter plots, histograms, color-color plots, light curves, power spectra, velocity plots, radial profiles, contour plots, and polar plots that allow you to explore the properties and behavior of stars, galaxies, 
+         With Odyssey, you can easily create $scatter plots$, $histograms$, $color-color plots$, $light curves$, $power spectra$, $velocity plots$, $radial profiles$, $contour plots$, and $polar plots$ that allow you to explore the properties and behavior of stars, galaxies, 
          and other celestial objects.''')
 st.markdown('----')
 st.write('Provide feedback at: https://forms.gle/5hKrGPJGqs2aeHUC8')
