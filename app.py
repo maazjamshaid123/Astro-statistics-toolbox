@@ -82,13 +82,21 @@ def main():
                 y_col = st.selectbox("Select Y-axis Feature", data.columns)
                 z_col = None
 
-            if x_col is not None and st.checkbox("Log X-axis"):
-                data[x_col] = np.log10(data[x_col]+1)
-            if y_col is not None and st.checkbox("Log Y-axis"):
-                data[y_col] = np.log10(data[y_col]+1)
-            if z_col is not None and st.checkbox("Log Z-axis"):
-                data[z_col] = np.log10(data[z_col]+1)
-                
+            if x_col is not None:
+                if data[x_col].dtype in [float, int]:
+                    if st.checkbox("Log X-axis"):
+                        data[x_col] = np.log10(data[x_col]+1)
+
+            if y_col is not None:
+                if data[y_col].dtype in [float, int]:
+                    if st.checkbox("Log Y-axis"):
+                        data[y_col] = np.log10(data[y_col]+1)
+
+            if z_col is not None:
+                if data[z_col].dtype in [float, int]:
+                    if st.checkbox("Log Z-axis"):
+                        data[z_col] = np.log10(data[z_col]+1)
+
             plot_data(data, plot_type, x_col, y_col, z_col)
 
 if __name__ == '__main__':
