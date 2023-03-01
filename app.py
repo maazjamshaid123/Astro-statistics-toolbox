@@ -10,21 +10,21 @@ st.set_page_config(page_title = 'ODYSSEY',page_icon="2.jpg", layout="wide", menu
         'About': '''$Odyssey$ by [AstroAlgo](https://www.linkedin.com/company/astroalgo): Data-Driven Insights Into The Cosmos'''
     })
 
-def add_bg_from_url():
-    st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background-image: url("https://htmlcolorcodes.com/assets/images/colors/black-color-solid-background-1920x1080.png");
-             background-attachment: fixed;
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
+# def add_bg_from_url():
+#     st.markdown(
+#          f"""
+#          <style>
+#          .stApp {{
+#              background-image: url("https://htmlcolorcodes.com/assets/images/colors/black-color-solid-background-1920x1080.png");
+#              background-attachment: fixed;
+#              background-size: cover
+#          }}
+#          </style>
+#          """,
+#          unsafe_allow_html=True
+#      )
 
-add_bg_from_url() 
+# add_bg_from_url() 
 
 # col1, col2, col3 = st.columns(3)
 # with col2:
