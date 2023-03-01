@@ -4,7 +4,27 @@ import plotly.express as px
 from skimage import io 
 import numpy as np
 
-st.set_page_config(page_title = 'ODYSSEY', layout="wide")
+st.set_page_config(page_title = 'ODYSSEY',page_icon="odyssey.png", layout="wide", menu_items={
+        'Get Help': 'https://www.linkedin.com/company/astroalgo',
+        'Report a bug': "https://forms.gle/5hKrGPJGqs2aeHUC8",
+        'About': '''$Odyssey$ by AstroAlgo: Data-Driven Insights Into The Cosmos'''
+    })
+
+def add_bg_from_url():
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://htmlcolorcodes.com/assets/images/colors/black-color-solid-background-1920x1080.png");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
+add_bg_from_url() 
 
 # col1, col2, col3 = st.columns(3)
 # with col2:
@@ -14,9 +34,35 @@ st.image('odyssey.png')
 # with col2:
 st.title('$ODYSSEY$ by AstroAlgo')
 st.subheader('Empowering Your Journey through Cosmic Data')
-st.write('Provide feedback at: https://forms.gle/5hKrGPJGqs2aeHUC8')
-
+st.write('''Introducing Odyssey, the ultimate app for analyzing astronomical data. Odyssey provides an intuitive and user-friendly interface for visualizing and analyzing your data. 
+         With Odyssey, you can easily create scatter plots, histograms, color-color plots, light curves, power spectra, velocity plots, radial profiles, contour plots, and polar plots that allow you to explore the properties and behavior of stars, galaxies, 
+         and other celestial objects.''')
 st.markdown('----')
+st.write('Provide feedback at: https://forms.gle/5hKrGPJGqs2aeHUC8')
+st.write('Linkedin: [AstroAlgo](https://www.linkedin.com/company/astroalgo)')
+st.markdown('----')
+
+# col1, col2 = st.columns(2)
+# with col1:
+with open("image.jpg", "rb") as file:
+    btn = st.download_button(
+            label="Download Sample Image",
+            data=file,
+            file_name="Black Hole M87.jpg",
+            mime="image/jpg")
+# with col2:
+def convert_df(df):
+# IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
+
+csv = pd.read_csv("data.csv", index_col=None)
+csv = convert_df(csv)
+st.download_button(
+label="Download Sample CSV",
+data=csv,
+file_name='Black Holes.csv',
+mime='text/csv',
+)
 
 def plot_data(data, plot_type, x_col, y_col=None, z_col=None):
     if plot_type == 'Scatter':
@@ -84,17 +130,17 @@ def main():
 
             if x_col is not None:
                 if data[x_col].dtype in [float, int]:
-                    if st.checkbox("Log X-axis"):
+                    if st.checkbox("Log X Feature"):
                         data[x_col] = np.log10(data[x_col]+1)
 
             if y_col is not None:
                 if data[y_col].dtype in [float, int]:
-                    if st.checkbox("Log Y-axis"):
+                    if st.checkbox("Log Y Feature"):
                         data[y_col] = np.log10(data[y_col]+1)
 
             if z_col is not None:
                 if data[z_col].dtype in [float, int]:
-                    if st.checkbox("Log Z-axis"):
+                    if st.checkbox("Log Z Feature"):
                         data[z_col] = np.log10(data[z_col]+1)
 
             plot_data(data, plot_type, x_col, y_col, z_col)
