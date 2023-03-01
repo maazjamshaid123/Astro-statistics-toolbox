@@ -4,7 +4,7 @@ import plotly.express as px
 from skimage import io 
 import numpy as np
 
-st.set_page_config(page_title = 'ODYSSEY',page_icon="odyssey.png", layout="wide", menu_items={
+st.set_page_config(page_title = 'ODYSSEY',page_icon="2.jpg", layout="wide", menu_items={
         'Get Help': 'https://www.linkedin.com/company/astroalgo',
         'Report a bug': "https://forms.gle/5hKrGPJGqs2aeHUC8",
         'About': '''$Odyssey$ by AstroAlgo: Data-Driven Insights Into The Cosmos'''
