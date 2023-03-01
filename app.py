@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from skimage import io 
+import numpy as np
 
 st.set_page_config(page_title = 'ODYSSEY', layout="wide")
 
@@ -80,6 +81,14 @@ def main():
                 x_col = st.selectbox("Select X-axis Feature", data.columns)
                 y_col = st.selectbox("Select Y-axis Feature", data.columns)
                 z_col = None
+
+            if x_col is not None and st.checkbox("Log X-axis"):
+                data[x_col] = np.log10(data[x_col]+1)
+            if y_col is not None and st.checkbox("Log Y-axis"):
+                data[y_col] = np.log10(data[y_col]+1)
+            if z_col is not None and st.checkbox("Log Z-axis"):
+                data[z_col] = np.log10(data[z_col]+1)
+                
             plot_data(data, plot_type, x_col, y_col, z_col)
 
 if __name__ == '__main__':
