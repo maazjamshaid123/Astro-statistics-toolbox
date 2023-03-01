@@ -19,19 +19,25 @@ st.markdown('----')
 
 def plot_data(data, plot_type, x_col, y_col=None, z_col=None):
     if plot_type == 'Scatter':
-        fig = px.scatter(data, x=x_col, y=y_col, color=z_col, width=1000, height=600)
+        fig = px.scatter(data, x=x_col, y=y_col, width=1000, height=700)
+    elif plot_type == 'Color-Color':
+        fig = px.scatter(data, x=x_col, y=y_col, color=z_col, width=1000, height=700)
     elif plot_type == 'Line':
-        fig = px.line(data, x=x_col, y=y_col, color=z_col, width=1000, height=600)
+        fig = px.line(data, x=x_col, y=y_col, width=1000, height=700)
+    elif plot_type == 'Light Curve':
+        fig = px.line(data, x=x_col, y=y_col, color=z_col, width=1000, height=700)
     elif plot_type == 'Bar':
-        fig = px.bar(data, x=x_col, y=y_col, color=z_col, width=1000, height=600)
+        fig = px.bar(data, x=x_col, y=y_col, width=1000, height=700)
+    elif plot_type == 'Horizontal Bar':
+        fig = px.bar(data, x=x_col, y=y_col, color=z_col, orientation='h', width=1000, height=700)
     elif plot_type == 'Histogram':
-        fig = px.histogram(data, x=x_col, width=1000, height=600)
+        fig = px.histogram(data, x=x_col, width=1000, height=700)
     elif plot_type == 'Density Heatmap':
-        fig = px.density_heatmap(data, x=x_col, y=y_col, width=1000, height=600,color_continuous_scale="Viridis")
+        fig = px.density_heatmap(data, x=x_col, y=y_col, width=1000, height=700,color_continuous_scale="Viridis")
     elif plot_type == '3D Scatter':
-        fig = px.scatter_3d(data, x=x_col, y=y_col, z=z_col, color=z_col, width=1000, height=600)
+        fig = px.scatter_3d(data, x=x_col, y=y_col, z=z_col, color=z_col, width=1000, height=700)
     elif plot_type == 'Analyze Image':
-        fig = px.imshow(data, width=1000, height=600)
+        fig = px.imshow(data, width=1000, height=700)
     st.plotly_chart(fig)
 
 
@@ -44,16 +50,28 @@ def main():
             data = pd.read_excel(file, engine='openpyxl')
         elif file.name.endswith('.jpg') or file.name.endswith('.jpeg') or file.name.endswith('.png'):
             data = io.imread(file)
-            data = px.imshow(data, width=1000, height=600)
+            data = px.imshow(data, width=1000, height=700)
         st.subheader("Data:")
         st.write(data)
 
         if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
-            plot_type = st.selectbox("Select Plot Type", ["Scatter", "Line", "Bar", "Histogram", "Density Heatmap", "3D Scatter"])
+            plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "3D Scatter"])
             if plot_type == '3D Scatter':
                 x_col = st.selectbox("Select X-axis Feature", data.columns)
                 y_col = st.selectbox("Select Y-axis Feature", data.columns)
                 z_col = st.selectbox("Select Z-axis Feature", data.columns)
+            elif plot_type == 'Color-Color':
+                x_col = st.selectbox("Select X-axis Feature", data.columns)
+                y_col = st.selectbox("Select Y-axis Feature", data.columns)
+                z_col = st.selectbox("Select Color Feature", data.columns)
+            elif plot_type == 'Light Curve':
+                x_col = st.selectbox("Select X-axis Feature", data.columns)
+                y_col = st.selectbox("Select Y-axis Feature", data.columns)
+                z_col = st.selectbox("Select Color Feature", data.columns)
+            elif plot_type == 'Horizontal Bar':
+                x_col = st.selectbox("Select X-axis Feature", data.columns)
+                y_col = st.selectbox("Select Y-axis Feature", data.columns)
+                z_col = st.selectbox("Select Color Feature", data.columns)
             elif plot_type == 'Histogram':
                 x_col = st.selectbox("Select X-axis Feature", data.columns)
                 y_col = None
@@ -64,6 +82,5 @@ def main():
                 z_col = None
             plot_data(data, plot_type, x_col, y_col, z_col)
 
-        
 if __name__ == '__main__':
     main()
