@@ -28,7 +28,7 @@ def show_analysis():
     file_name='Black Holes.csv',
     mime='text/csv',)
 
-    def plot_data(data, plot_type, x_col, y_col=None, z_col=None):
+    def plot_data(data, plot_type, x_col, y_col=None, z_col=None, scatter_matrix_cols=None):
         if plot_type == 'Scatter':
             fig = px.scatter(data, x=x_col, y=y_col)
         elif plot_type == 'Color-Color':
@@ -47,10 +47,11 @@ def show_analysis():
             fig = px.density_heatmap(data, x=x_col, y=y_col,color_continuous_scale="Viridis")
         elif plot_type == '3D Scatter':
             fig = px.scatter_3d(data, x=x_col, y=y_col, z=z_col, color=z_col)
+        elif plot_type == 'PCA Analysis':
+            fig = px.scatter_matrix(data, dimensions=scatter_matrix_cols, color=z_col, width=1000, height=700)
         elif plot_type == 'Analyze Image':
             fig = px.imshow(data)
         st.plotly_chart(fig)
-
 
     def main():
         file = st.file_uploader("Upload a file to get started", type=["csv", "xlsx", "jpg", "jpeg", "png"])
@@ -66,47 +67,59 @@ def show_analysis():
             st.write(data)
 
             if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
-                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "3D Scatter"])
+                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "3D Scatter", "PCA Analysis"])
                 if plot_type == '3D Scatter':
-                    x_col = st.selectbox("Select X-axis Feature", data.columns)
-                    y_col = st.selectbox("Select Y-axis Feature", data.columns)
-                    z_col = st.selectbox("Select Z-axis Feature", data.columns)
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 elif plot_type == 'Color-Color':
-                    x_col = st.selectbox("Select X-axis Feature", data.columns)
-                    y_col = st.selectbox("Select Y-axis Feature", data.columns)
-                    z_col = st.selectbox("Select Color Feature", data.columns)
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 elif plot_type == 'Light Curve':
-                    x_col = st.selectbox("Select X-axis Feature", data.columns)
-                    y_col = st.selectbox("Select Y-axis Feature", data.columns)
-                    z_col = st.selectbox("Select Color Feature", data.columns)
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 elif plot_type == 'Horizontal Bar':
-                    x_col = st.selectbox("Select X-axis Feature", data.columns)
-                    y_col = st.selectbox("Select Y-axis Feature", data.columns)
-                    z_col = st.selectbox("Select Color Feature", data.columns)
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 elif plot_type == 'Histogram':
-                    x_col = st.selectbox("Select X-axis Feature", data.columns)
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = None
                     z_col = None
+                elif plot_type == 'PCA Analysis':
+                    features = st.multiselect("Select Features", data.columns)
+                    x_col = None
+                    y_col = None
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 else:
-                    x_col = st.selectbox("Select X-axis Feature", data.columns)
-                    y_col = st.selectbox("Select Y-axis Feature", data.columns)
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
                     z_col = None
 
                 if x_col is not None:
                     if data[x_col].dtype in [float, int]:
-                        if st.checkbox("Log X Feature"):
+                        if st.checkbox("Log 1st Feature"):
                             data[x_col] = np.log10(data[x_col]+1)
 
                 if y_col is not None:
                     if data[y_col].dtype in [float, int]:
-                        if st.checkbox("Log Y Feature"):
+                        if st.checkbox("Log 2nd Feature"):
                             data[y_col] = np.log10(data[y_col]+1)
 
                 if z_col is not None:
                     if data[z_col].dtype in [float, int]:
-                        if st.checkbox("Log Z Feature"):
+                        if st.checkbox("Log 3rd Feature"):
                             data[z_col] = np.log10(data[z_col]+1)
 
-                plot_data(data, plot_type, x_col, y_col, z_col)
+                if plot_type == 'PCA Analysis':
+                    if features is not None:
+                        scatter_matrix_cols = [col for col in data.columns if col in features]
+                        plot_data(data, plot_type, None, None, z_col, scatter_matrix_cols)
+                else:
+                    plot_data(data, plot_type, x_col, y_col, z_col)
+                    
     main()
+
 
