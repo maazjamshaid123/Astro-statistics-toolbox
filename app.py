@@ -17,7 +17,9 @@ PAGE_DICT = {
     "Astronomical Analysis": show_analysis,
     "Predict Galaxy Redshifts": show_redshift
 }
-page = st.sidebar.selectbox("Select a page", PAGE_DICT)
+page = st.sidebar.selectbox("Get Started", PAGE_DICT)
+
+st.sidebar.markdown("---")
 
 #***********************************************************************************************
 
