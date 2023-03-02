@@ -10,33 +10,17 @@ st.set_page_config(page_title = 'ODYSSEY',page_icon="2.jpg", layout="wide", menu
         'About': '''$Odyssey$ by [AstroAlgo](https://www.linkedin.com/company/astroalgo): Data-Driven Insights Into The Cosmos'''
     })
 
-# def add_bg_from_url():
-#     st.markdown(
-#          f"""
-#          <style>
-#          .stApp {{
-#              background-image: url("https://htmlcolorcodes.com/assets/images/colors/black-color-solid-background-1920x1080.png");
-#              background-attachment: fixed;
-#              background-size: cover
-#          }}
-#          </style>
-#          """,
-#          unsafe_allow_html=True
-#      )
-
-# add_bg_from_url() 
+col1, col2, col3 = st.columns(3)
+with col2:
+    st.image('try.png')
 
 # col1, col2, col3 = st.columns(3)
 # with col2:
-st.image('ODYSSEY.png')
-
-# col1, col2, col3 = st.columns(3)
-# with col2:
-st.title('$ODYSSEY$ by AstroAlgo')
-st.subheader('Empowering Your Journey through Cosmic Data')
-st.write('''Introducing Odyssey, the ultimate app for analyzing astronomical data. Odyssey provides an intuitive and user-friendly interface for visualizing and analyzing your data. 
-         With Odyssey, you can easily create $scatter plots$, $histograms$, $color-color plots$, $light curves$, $power spectra$, $velocity plots$, $radial profiles$, $contour plots$, and $polar plots$ that allow you to explore the properties and behavior of stars, galaxies, 
-         and other celestial objects.''')
+# st.title('$ODYSSEY$ by AstroAlgo')
+st.subheader('From Data To Discovery: Revolutionize Your Understanding Of The Cosmos')
+# st.write('''Introducing Odyssey, the ultimate app for analyzing astronomical data. Odyssey provides an intuitive and user-friendly interface for visualizing and analyzing your data. 
+#          With Odyssey, you can easily create $scatter plots$, $histograms$, $color-color plots$, $light curves$, $power spectra$, $velocity plots$, $radial profiles$, $contour plots$, and $polar plots$ that allow you to explore the properties and behavior of stars, galaxies, 
+#          and other celestial objects.''')
 st.markdown('----')
 st.write('Provide feedback at: https://forms.gle/5hKrGPJGqs2aeHUC8')
 st.write('Linkedin: [AstroAlgo](https://www.linkedin.com/company/astroalgo)')
