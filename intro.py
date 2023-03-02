@@ -5,12 +5,12 @@ def show_intro():
     with col2:
         st.image('odyssey.png')
 
-    # st.title("$WHAT$ $IS$ $ODYSSEY?$")
-    st.subheader('From Data To Discovery: Revolutionize Your Understanding Of The Cosmos')
+    st.title("_ODYSSEY by  AstroAlgo_")
+    st.button('From Data To Discovery: Revolutionize Your Understanding Of The Cosmos')
 
     st.markdown('----')
 
     st.write('Provide feedback at: https://forms.gle/5hKrGPJGqs2aeHUC8')
-    st.write('Linkedin: [AstroAlgo](https://www.linkedin.com/company/astroalgo)')
+    st.write('[Linkedin](https://www.linkedin.com/company/astroalgo)')
 
     st.markdown('----')
