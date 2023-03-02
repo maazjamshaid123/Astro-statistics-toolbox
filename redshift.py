@@ -1,4 +1,4 @@
 import streamlit as st
 
 def show_redshift():
-    st.title("Intro")
+    st.title("Predict Galaxy Redshifts")

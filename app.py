@@ -3,13 +3,14 @@ import streamlit as st
 from intro import show_intro
 from analysis import show_analysis
 from redshift import show_redshift
+from black_hole import show_black_hole
 
 st.set_page_config(page_title = 'ODYSSEY | AstroAlgo',page_icon="page_icon.png", layout="wide", menu_items={
         'Get Help': 'https://www.linkedin.com/company/astroalgo',
         'Report a bug': "https://forms.gle/5hKrGPJGqs2aeHUC8",
         'About': '''$Odyssey$ by [AstroAlgo](https://www.linkedin.com/company/astroalgo): Data-Driven Insights Into The Cosmos'''
     })
-logo = "1_bg.png"
+logo = "astroalgo.png"
 st.sidebar.image(logo, use_column_width=True)
 PAGE_DICT = {
     "What is Odyssey?": show_intro,
@@ -29,7 +30,11 @@ elif page == "Astronomical Analysis": #SECOND PAGE
 #***********************************************************************************************
 
 elif page == "Predict Galaxy Redshifts": #THIRD PAGE
-    st.title("Predict Galaxy Redshifts")
-    # Add your redshift prediction content here
+    show_redshift()
+
+#***********************************************************************************************
+
+elif page == "Black Holes in Globular Clusters": #THIRD PAGE
+    show_black_hole()
 
 
