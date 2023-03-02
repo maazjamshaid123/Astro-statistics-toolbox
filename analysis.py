@@ -5,10 +5,13 @@ from skimage import io
 import numpy as np
 
 def show_analysis():
-    st.title("Astronomical Analysis")
+    st.title("_Astronomical Analysis_")
+
+    st.markdown("---")
+ 
     with open("image.jpg", "rb") as file:
         btn = st.download_button(
-                label="Download Sample Image",
+                label="Sample Image",
                 data=file,
                 file_name="Black Hole M87.jpg",
                 mime="image/jpg")
@@ -20,11 +23,10 @@ def show_analysis():
     csv = pd.read_csv("data.csv", index_col=None)
     csv = convert_df(csv)
     st.download_button(
-    label="Download Sample CSV",
+    label="Sample CSV",
     data=csv,
     file_name='Black Holes.csv',
-    mime='text/csv',
-    )
+    mime='text/csv',)
 
     def plot_data(data, plot_type, x_col, y_col=None, z_col=None):
         if plot_type == 'Scatter':
