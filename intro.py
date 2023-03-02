@@ -6,11 +6,11 @@ def show_intro():
         st.image('odyssey.png')
 
     st.title("_ODYSSEY by  AstroAlgo_")
-    st.button('From Data To Discovery: Revolutionize Your Understanding Of The Cosmos')
+    st.subheader('From Data To Discovery: Revolutionize Your Understanding Of The Cosmos')
 
     st.markdown('----')
 
-    st.write('Provide feedback at: https://forms.gle/5hKrGPJGqs2aeHUC8')
+    st.write('Provide feedback [here](https://forms.gle/5hKrGPJGqs2aeHUC8)')
     st.write('[Linkedin](https://www.linkedin.com/company/astroalgo)')
 
     st.markdown('----')
