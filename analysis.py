@@ -48,7 +48,7 @@ def show_analysis():
         elif plot_type == '3D Scatter':
             fig = px.scatter_3d(data, x=x_col, y=y_col, z=z_col, color=z_col)
         elif plot_type == 'PCA Analysis':
-            fig = px.scatter_matrix(data, dimensions=scatter_matrix_cols, color=z_col, width=1000, height=700)
+            fig = px.scatter_matrix(data, dimensions=scatter_matrix_cols, color=z_col)
         elif plot_type == 'Analyze Image':
             fig = px.imshow(data)
         st.plotly_chart(fig)
@@ -67,7 +67,7 @@ def show_analysis():
             st.write(data)
 
             if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
-                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "3D Scatter", "PCA Analysis"])
+                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "3D Scatter"])
                 if plot_type == '3D Scatter':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
