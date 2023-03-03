@@ -134,7 +134,7 @@ def show_analysis():
                     if features is not None:
                         scatter_matrix_cols = [col for col in data.columns if col in features]
                         plot_data(data, plot_type, None, None, z_col, scatter_matrix_cols)
-                elif plot_type == 'Surface Plot with Contours':
+                if plot_type == 'Surface Plot with Contours':
                     fig = go.Figure(data=[go.Surface(x=data[x_col], y=data[y_col], z=data[z_col])])
                     fig.update_traces(contours_z=dict(show=True, usecolormap=True, highlightcolor="limegreen", project_z=True))
                     st.plotly_chart(fig)
