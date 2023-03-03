@@ -31,35 +31,37 @@ def show_analysis():
 
     def plot_data(data, plot_type, x_col, y_col=None, z_col=None, scatter_matrix_cols=None):
         if plot_type == 'Scatter':
-            fig = px.scatter(data, x=x_col, y=y_col)
+            fig = px.scatter(data, x=x_col, y=y_col, width=1000, height=700)
         elif plot_type == 'Color-Color':
-            fig = px.scatter(data, x=x_col, y=y_col, color=z_col,,color_continuous_scale="Viridis")
+            fig = px.scatter(data, x=x_col, y=y_col, color=z_col,color_continuous_scale="Viridis", width=1000, height=700)
         elif plot_type == 'Line':
-            fig = px.line(data, x=x_col, y=y_col)
+            fig = px.line(data, x=x_col, y=y_col, width=1000, height=700)
         elif plot_type == 'Light Curve':
-            fig = px.line(data, x=x_col, y=y_col, color=z_col)
+            fig = px.line(data, x=x_col, y=y_col, color=z_col, width=1000, height=700)
         elif plot_type == 'Bar':
-            fig = px.bar(data, x=x_col, y=y_col)
+            fig = px.bar(data, x=x_col, y=y_col, color=z_col, color_continuous_scale="Viridis", width=1000, height=700)
         elif plot_type == 'Horizontal Bar':
-            fig = px.bar(data, x=x_col, y=y_col, color=z_col, orientation='h')
+            fig = px.bar(data, x=x_col, y=y_col, color=z_col, orientation='h',color_continuous_scale="Viridis", width=1000, height=700)
         elif plot_type == 'Histogram':
-            fig = px.histogram(data, x=x_col)
+            fig = px.histogram(data, x=x_col, width=1000, height=700)
         elif plot_type == 'Density Heatmap':
-            fig = px.density_heatmap(data, x=x_col, y=y_col,color_continuous_scale="Viridis")
+            fig = px.density_heatmap(data, x=x_col, y=y_col,color_continuous_scale="Viridis", width=1000, height=700)
         elif plot_type == '3D Scatter':
-            fig = px.scatter_3d(data, x=x_col, y=y_col, z=z_col, color=z_col)
+            fig = px.scatter_3d(data, x=x_col, y=y_col, z=z_col, color=z_col,color_continuous_scale="Viridis", width=1000, height=700)
         elif plot_type == 'PCA Analysis':
-            fig = px.scatter_matrix(data, dimensions=scatter_matrix_cols, color=z_col)
+            fig = px.scatter_matrix(data, dimensions=scatter_matrix_cols, color=z_col, color_continuous_scale="Viridis", width=1000, height=700)
         elif plot_type == 'Analyze Image':
             fig = px.imshow(data)
         elif plot_type == 'Contour Plot':
-            fig = px.density_contour(data, x=x_col, y=y_col, z=z_col)
-        elif plot_type == 'Surface Plot with Contours':
-                    fig = go.Figure(data=[go.Surface(z=data[z_col].values.reshape(data[x_col].nunique(), data[y_col].nunique()))])
-                    fig.add_trace(go.Contour(z=data[z_col].values.reshape(data[x_col].nunique(), data[y_col].nunique()),
-                                            x=data[x_col].unique(),
-                                            y=data[y_col].unique(),
-                                            contours=dict(coloring='lines', showlabels=True, labelfont=dict(size=12))))
+            fig = px.density_contour(data, x=x_col, y=y_col, z=z_col, width=1000, height=700)
+        elif plot_type == 'Residual':
+            fig = px.scatter(data, x=x_col, y=y_col, color=z_col, marginal_y='violin', trendline='ols', trendline_color_override='darkred', width=1000, height=700)
+        elif plot_type == 'Receiver Operating Characteristics (ROC)':
+            fig = px.area(data, x=x_col, y=y_col,color=z_col, width=1000, height=700)
+        elif plot_type == 'Ordinary Least Square (OLS)':
+            fig = px.scatter(data, x=x_col, y=y_col,trendline='ols', trendline_color_override='darkred', width=1000, height=700)
+        elif plot_type == 'Enhanced Prediction Error Analysis':
+            fig = px.scatter(data, x=x_col, y=y_col, color=z_col,marginal_x='histogram', marginal_y='histogram', trendline='ols', trendline_color_override='darkred', width=1000, height=700)
         st.plotly_chart(fig)
 
     def main():
@@ -76,7 +78,7 @@ def show_analysis():
             st.write(data)
 
             if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
-                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "Contour Plot", "Surface Plot with Contours", "3D Scatter"])
+                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "Contour Plot", "Residual", "Ordinary Least Square (OLS)", "Receiver Operating Characteristics (ROC)", "Enhanced Prediction Error Analysis", "3D Scatter"])
                 if plot_type == '3D Scatter':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
@@ -93,6 +95,10 @@ def show_analysis():
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
                     z_col = st.selectbox("Select 3rd Feature", data.columns)
+                elif plot_type == 'Bar':
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 elif plot_type == 'Histogram':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = None
@@ -106,10 +112,18 @@ def show_analysis():
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
                     z_col = st.selectbox("Select 3rd Feature", data.columns)
-                elif plot_type == 'Surface Plot with Contours':
+                elif plot_type == 'Receiver Operating Characteristics (ROC)':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
-                    z_col = st.selectbox("Select 3rd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns) 
+                elif plot_type == 'Enhanced Prediction Error Analysis':
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)      
+                elif plot_type == 'Residual':
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)          
                 else:
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
@@ -119,12 +133,10 @@ def show_analysis():
                     if data[x_col].dtype in [float, int]:
                         if st.checkbox("Log 1st Feature"):
                             data[x_col] = np.log10(data[x_col]+1)
-
                 if y_col is not None:
                     if data[y_col].dtype in [float, int]:
                         if st.checkbox("Log 2nd Feature"):
                             data[y_col] = np.log10(data[y_col]+1)
-
                 if z_col is not None:
                     if data[z_col].dtype in [float, int]:
                         if st.checkbox("Log 3rd Feature"):
@@ -134,10 +146,12 @@ def show_analysis():
                     if features is not None:
                         scatter_matrix_cols = [col for col in data.columns if col in features]
                         plot_data(data, plot_type, None, None, z_col, scatter_matrix_cols)
-                if plot_type == 'Surface Plot with Contours':
-                    fig = go.Figure(data=[go.Surface(x=data[x_col], y=data[y_col], z=data[z_col])])
-                    fig.update_traces(contours_z=dict(show=True, usecolormap=True, highlightcolor="limegreen", project_z=True))
-                    st.plotly_chart(fig)
+                elif plot_type == "Ordinary Least Square (OLS)":
+                    try: 
+                        data[x_col].dtype or data[y_col].dtype in [float, int]
+                        plot_data(data, plot_type, x_col, y_col, z_col)
+                    except:
+                        st.error("Not a Numeric Type Value", icon="🚨")
                 else:
                     plot_data(data, plot_type, x_col, y_col, z_col)
                     
