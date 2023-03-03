@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from skimage import io 
 import numpy as np
+import plotly.graph_objects as go
 
 def show_analysis():
     st.title("_Astronomical Analysis_")
@@ -51,6 +52,14 @@ def show_analysis():
             fig = px.scatter_matrix(data, dimensions=scatter_matrix_cols, color=z_col)
         elif plot_type == 'Analyze Image':
             fig = px.imshow(data)
+        elif plot_type == 'Contour Plot':
+            fig = px.density_contour(data, x=x_col, y=y_col, z=z_col)
+        elif plot_type == 'Surface Plot with Contours':
+                    fig = go.Figure(data=[go.Surface(z=data[z_col].values.reshape(data[x_col].nunique(), data[y_col].nunique()))])
+                    fig.add_trace(go.Contour(z=data[z_col].values.reshape(data[x_col].nunique(), data[y_col].nunique()),
+                                            x=data[x_col].unique(),
+                                            y=data[y_col].unique(),
+                                            contours=dict(coloring='lines', showlabels=True, labelfont=dict(size=12))))
         st.plotly_chart(fig)
 
     def main():
@@ -67,7 +76,7 @@ def show_analysis():
             st.write(data)
 
             if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
-                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "3D Scatter"])
+                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "Contour Plot", "Surface Plot with Contours", "3D Scatter"])
                 if plot_type == '3D Scatter':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
@@ -93,6 +102,14 @@ def show_analysis():
                     x_col = None
                     y_col = None
                     z_col = st.selectbox("Select 3rd Feature", data.columns)
+                elif plot_type == 'Contour Plot':
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
+                elif plot_type == 'Surface Plot with Contours':
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)
                 else:
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
@@ -117,6 +134,10 @@ def show_analysis():
                     if features is not None:
                         scatter_matrix_cols = [col for col in data.columns if col in features]
                         plot_data(data, plot_type, None, None, z_col, scatter_matrix_cols)
+                elif plot_type == 'Surface Plot with Contours':
+                    fig = go.Figure(data=[go.Surface(x=data[x_col], y=data[y_col], z=data[z_col])])
+                    fig.update_traces(contours_z=dict(show=True, usecolormap=True, highlightcolor="limegreen", project_z=True))
+                    st.plotly_chart(fig)
                 else:
                     plot_data(data, plot_type, x_col, y_col, z_col)
                     
