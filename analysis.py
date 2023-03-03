@@ -33,7 +33,7 @@ def show_analysis():
         if plot_type == 'Scatter':
             fig = px.scatter(data, x=x_col, y=y_col)
         elif plot_type == 'Color-Color':
-            fig = px.scatter(data, x=x_col, y=y_col, color=z_col)
+            fig = px.scatter(data, x=x_col, y=y_col, color=z_col,,color_continuous_scale="Viridis")
         elif plot_type == 'Line':
             fig = px.line(data, x=x_col, y=y_col)
         elif plot_type == 'Light Curve':
