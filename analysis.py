@@ -4,6 +4,7 @@ import plotly.express as px
 from skimage import io 
 import numpy as np
 import plotly.graph_objects as go
+import plotly.figure_factory as ff
 
 def show_analysis():
     st.title("_Astronomical Analysis_")
@@ -62,6 +63,8 @@ def show_analysis():
             fig = px.scatter(data, x=x_col, y=y_col,trendline='ols', trendline_color_override='darkred', width=1000, height=700)
         elif plot_type == 'Enhanced Prediction Error Analysis':
             fig = px.scatter(data, x=x_col, y=y_col, color=z_col,marginal_x='histogram', marginal_y='histogram', trendline='ols', trendline_color_override='darkred', width=1000, height=700)
+        elif plot_type == 'Distplot':
+            fig = px.histogram(data, x=x_col, y=y_col, color=z_col, marginal="rug", width=1000, height=700)
         st.plotly_chart(fig)
 
     def main():
@@ -78,7 +81,7 @@ def show_analysis():
             st.write(data)
 
             if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
-                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "Contour Plot", "Residual", "Ordinary Least Square (OLS)", "Receiver Operating Characteristics (ROC)", "Enhanced Prediction Error Analysis", "3D Scatter"])
+                plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "Contour Plot", "Distplot", "Residual", "Ordinary Least Square (OLS)", "Receiver Operating Characteristics (ROC)", "Enhanced Prediction Error Analysis", "3D Scatter"])
                 if plot_type == '3D Scatter':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
@@ -98,7 +101,7 @@ def show_analysis():
                 elif plot_type == 'Bar':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
-                    z_col = st.selectbox("Select 3rd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)            
                 elif plot_type == 'Histogram':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = None
@@ -123,7 +126,11 @@ def show_analysis():
                 elif plot_type == 'Residual':
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
-                    z_col = st.selectbox("Select 3rd Feature", data.columns)          
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)   
+                elif plot_type == 'Distplot':
+                    x_col = st.selectbox("Select 1st Feature", data.columns)
+                    y_col = st.selectbox("Select 2nd Feature", data.columns)
+                    z_col = st.selectbox("Select 3rd Feature", data.columns)   
                 else:
                     x_col = st.selectbox("Select 1st Feature", data.columns)
                     y_col = st.selectbox("Select 2nd Feature", data.columns)
