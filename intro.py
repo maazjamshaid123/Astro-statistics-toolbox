@@ -6,8 +6,8 @@ def show_intro():
     with col2:
         st.image('odyssey.png')
 
-    st.title("_ODYSSEY by  AstroAlgo_")
-    st.subheader('From Data To Discovery: Revolutionize Your Understanding Of The Cosmos')
+    st.title("$ODYSSEY$ $by$  $AstroAlgo$")
+    st.subheader('_From Data To Discovery: Revolutionize Your Understanding Of The Cosmos_')
 
     st.markdown('----')
 
@@ -41,7 +41,7 @@ def show_intro():
 
     st.markdown("---")
 
-    st.error('Astronomical Analysis', icon = "🪐")
+    st.error('$Astronomical$ $Analysis$', icon = "🪐")
     # Define the list of items to display
     items = [
         'Scatter Plot',
