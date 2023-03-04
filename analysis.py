@@ -77,8 +77,8 @@ def show_analysis():
             elif file.name.endswith('.jpg') or file.name.endswith('.jpeg') or file.name.endswith('.png'):
                 data = io.imread(file)
                 data = px.imshow(data, width=1000, height=700)
-            st.subheader("Data:")
-            st.write(data)
+            st.subheader("Data (Editable):")
+            st.experimental_data_editor(data)
 
             if file.name.endswith('.csv') or file.name.endswith('.xlsx'):
                 plot_type = st.selectbox("Select Plot Type", ["Scatter", "Color-Color", "Line", "Light Curve", "Bar", "Horizontal Bar", "Histogram", "Density Heatmap", "PCA Analysis", "Contour Plot", "Distplot", "Residual", "Ordinary Least Square (OLS)", "Receiver Operating Characteristics (ROC)", "Enhanced Prediction Error Analysis", "3D Scatter"])
