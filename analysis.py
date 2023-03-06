@@ -5,7 +5,7 @@ from skimage import io
 import numpy as np
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
- import statsmodels.api as sm
+import statsmodels.api as sm
 
 def show_analysis():
     st.title("_Astronomical Analysis_")
