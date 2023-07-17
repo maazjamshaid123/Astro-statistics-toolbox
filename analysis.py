@@ -8,7 +8,49 @@ import plotly.figure_factory as ff
 import statsmodels.api as sm
 
 def show_analysis():
-    st.title("_Astronomical Analysis_")
+    st.title("_Exploratory Data Analysis (EDA)_")
+    # Create a button to show/hide the code block
+    if st.button('Explore'):
+        if st.checkbox('Hide', value=False):
+            st.empty()
+        else:
+            # Define the code block
+            st.error('Exploratory Data Analysis (EDA)', icon="📊")
+            
+            # Define the list of items to display
+            items = [
+                'Files Supported: CSV, XLSX, JPG, JPEG, PNG',
+                'Image Analysis',
+                'Scatter Plot',
+                'Color-Color Plot',
+                'Line Plot',
+                'Plot For Light Curve',
+                'Bar Plot',
+                'Horizontal Bar Plot',
+                'Histogram',
+                'Density Heatmap',
+                'PCA Analysis',
+                'Contour Plot',
+                'Distplot',
+                'Residual',
+                'Ordinary Least Square (OLS)',
+                'Receiver Operating Characteristics (ROC)',
+                'Enhanced Prediction Error Analysis',
+                '3D Scatter'
+            ]
+            
+            # Calculate the number of rows required to display all the items
+            num_rows = len(items) // 3 + 1
+            
+            # Use a for loop to display each item in a separate column
+            for i in range(num_rows):
+                col1, col2, col3 = st.columns(3)
+                if i*3 < len(items):
+                    col1.info(items[i*3])
+                if i*3+1 < len(items):
+                    col2.info(items[i*3+1])
+                if i*3+2 < len(items):
+                    col3.info(items[i*3+2])
 
     st.markdown("---")
  
