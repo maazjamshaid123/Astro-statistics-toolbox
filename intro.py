@@ -11,7 +11,7 @@ def show_intro():
 
     st.markdown('----')
 
-    st.info('[Who Are We?](www.astroalgo.com)')
+    st.info('[Who Are We?](https://www.astroalgo.com)')
     st.info('[Creator](https://www.linkedin.com/in/maazjamshaid/)')
 
     st.markdown('----')
