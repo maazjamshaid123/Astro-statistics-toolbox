@@ -10,7 +10,7 @@ st.set_page_config(page_title = 'ODYSSEY',page_icon="page_icon.png", layout="wid
         'About': '''$Odyssey$: Data-Driven Insights Into The Cosmos'''
     })
 
-st.sidebar.image("images/5.png", use_column_width=True)
+st.sidebar.image("5.png", use_column_width=True)
 
 # st.sidebar.markdown("---")
 
