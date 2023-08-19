@@ -4,7 +4,7 @@ from analysis import show_analysis
 from astrogpt import show_gpt
 from astrodata import show_caelus
 
-st.set_page_config(page_title = 'ODYSSEY',page_icon="images/page_icon.png", layout="wide", menu_items={
+st.set_page_config(page_title = 'ODYSSEY',page_icon="page_icon.png", layout="wide", menu_items={
         'Get Help': 'https://www.linkedin.com/in/maazjamshaid/',
         'Report a bug': "https://www.linkedin.com/in/maazjamshaid/",
         'About': '''$Odyssey$: Data-Driven Insights Into The Cosmos'''
