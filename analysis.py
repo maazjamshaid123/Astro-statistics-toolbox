@@ -8,7 +8,7 @@ import plotly.figure_factory as ff
 import statsmodels.api as sm
 
 def show_analysis():
-    st.title("_Exploratory Data Analysis (EDA)_")
+    st.title("_Exploratory Data Analysis (EDA)_ 📊")
     # Create a button to show/hide the code block
     if st.button('Explore'):
         if st.checkbox('Hide', value=False):
@@ -54,7 +54,7 @@ def show_analysis():
 
     st.markdown("---")
  
-    with open("image.jpg", "rb") as file:
+    with open("images/image.jpg", "rb") as file:
         btn = st.download_button(
                 label="Sample Image",
                 data=file,

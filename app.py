@@ -1,25 +1,24 @@
 import streamlit as st
 from intro import show_intro
 from analysis import show_analysis
-from wait import show_wait
-# from redshift import show_redshift
-# from black_hole import show_black_hole
+from astrogpt import show_gpt
+from astrodata import show_caelus
 
-st.set_page_config(page_title = 'ODYSSEY',page_icon="page_icon.png", layout="wide", menu_items={
+st.set_page_config(page_title = 'ODYSSEY',page_icon="images/page_icon.png", layout="wide", menu_items={
         'Get Help': 'https://www.linkedin.com/in/maazjamshaid/',
         'Report a bug': "https://www.linkedin.com/in/maazjamshaid/",
         'About': '''$Odyssey$: Data-Driven Insights Into The Cosmos'''
     })
 
-st.sidebar.image("5.png", use_column_width=True)
+st.sidebar.image("images/5.png", use_column_width=True)
 
 # st.sidebar.markdown("---")
 
 PAGE_DICT = {
     "What is Odyssey? 🌌": show_intro,
     "Exploratory Data Analysis (EDA) 📊": show_analysis,
-    "AstroGPT Insights 💪": show_wait,
-    "Talk with AstroData 💭": show_wait
+    "AstroGPT Insights 🧠": show_gpt,
+    "Talk to Caelus 🤖": show_caelus
 }
 page = st.sidebar.selectbox("Get Started", PAGE_DICT)
 
@@ -38,10 +37,10 @@ elif page == "Exploratory Data Analysis (EDA) 📊": #SECOND PAGE
     
 #***********************************************************************************************
 
-elif page == "AstroGPT Insights 💪": #THIRD PAGE
-    show_wait()
+elif page == "AstroGPT Insights 🧠": #THIRD PAGE
+    show_gpt()
 
 #***********************************************************************************************
 
-elif page == "Talk with AstroData 💭": #FOURTH PAGE
-    show_wait()
+elif page == "Talk to Caelus 🤖": #FOURTH PAGE
+    show_caelus()

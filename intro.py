@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show_intro():
-    # st.image('odyssey.png')
+    # st.image('images/odyssey.png')
     # video_file = open('ODYSSEY.mp4', 'rb')
     # video_bytes = video_file.read()
     # st.video(video_bytes)
