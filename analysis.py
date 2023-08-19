@@ -54,7 +54,7 @@ def show_analysis():
 
     st.markdown("---")
  
-    with open("images/image.jpg", "rb") as file:
+    with open("image.jpg", "rb") as file:
         btn = st.download_button(
                 label="Sample Image",
                 data=file,
