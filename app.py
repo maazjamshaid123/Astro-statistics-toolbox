@@ -11,7 +11,7 @@ st.set_page_config(page_title = 'ODYSSEY',page_icon="page_icon.png", layout="wid
     })
 
 st.sidebar.image("5.png", use_column_width=True)
-# st.sidebar.markdown("---")
+st.sidebar.markdown("---")
 
 PAGE_DICT = {
     "What is Odyssey? 🌌": show_intro,
