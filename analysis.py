@@ -116,11 +116,11 @@ def show_analysis():
             if file.name.endswith('.csv'):
                 data = pd.read_csv(file)
                 st.subheader("Data (Editable):")
-                st.experimental_data_editor(data)
+                st.data_editor(data)
             elif file.name.endswith('.xlsx'):
                 data = pd.read_excel(file, engine='openpyxl')
                 st.subheader("Data (Editable):")
-                st.experimental_data_editor(data)
+                st.data_editor(data)
             elif file.name.endswith('.jpg') or file.name.endswith('.jpeg') or file.name.endswith('.png'):
                 data = io.imread(file)
                 data = px.imshow(data, width=1000, height=700)
