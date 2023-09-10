@@ -23,6 +23,7 @@ page = st.sidebar.selectbox("Get Started", PAGE_DICT)
 
 st.sidebar.markdown("---")
 
+st.write('©2022 AstroAlgo')
 
 #***********************************************************************************************
 
