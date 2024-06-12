@@ -1,11 +1,6 @@
 import streamlit as st
 
 def show_intro():
-    # st.image('images/odyssey.png')
-    # video_file = open('ODYSSEY.mp4', 'rb')
-    # video_bytes = video_file.read()
-    # st.video(video_bytes)
-
     st.title("$ODYSSEY$")
     st.subheader('_From Data To Discovery: Revolutionize Your Understanding Of The Cosmos_')
 
