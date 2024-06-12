@@ -1,41 +1,36 @@
-ODYSSEY
-From Data To Discovery: Revolutionize Your Understanding Of The Cosmos
+# Odyssey: Empowering Space Scientists with Data-Driven Solutions
 
-Odyssey is an innovative app developed to help space scientists in the fields of astronomy and astrophysics. With the help of data-driven approaches such as data analysis, visualization, machine learning, and artificial intelligence, Odyssey provides effective solutions for a wide range of problems faced by space scientists.
-The app is designed to be user-friendly and accessible to scientists with varying levels of expertise in data-driven approaches. With a wide range of tools and features, Odyssey makes it easy for scientists to analyze large datasets, visualize complex data, and develop effective solutions to a variety of problems.
-If you're a space scientist looking for effective data-driven solutions to complex problems in astronomy and astrophysics, Odyssey is the web app for you. With its user-friendly interface and advanced features, Odyssey can help you take your research to the next level and unlock new insights into the mysteries of the cosmos.
+![Odyssey](page_icon.png)
 
+## Introduction
 
-Scatter Plot
+Odyssey is an innovative app designed to assist space scientists in the fields of astronomy and astrophysics. Leveraging data-driven approaches such as data analysis, visualization, machine learning, and artificial intelligence, Odyssey provides effective solutions for a wide range of problems encountered by space scientists.
 
-Color-Color Plot
+## Features
 
-Line Plot
+Odyssey is designed to be user-friendly and accessible to scientists with varying levels of expertise in data-driven methodologies. Some of the key features include:
 
-Plot For Light Curve
+- **Data Analysis:** Analyze large datasets with ease.
+- **Data Visualization:** Visualize complex data through various types of plots and charts.
+- **Machine Learning & AI:** Implement advanced machine learning and AI techniques for data analysis.
+- **User-Friendly Interface:** An intuitive interface that simplifies the workflow for scientists.
 
-Bar Plot
+## Installation
 
-Horizontal Bar Plot
+To get started with Odyssey, clone the repository and install the required dependencies.
 
-Histogram
-
-Density Heatmap
-
-PCA Analysis
-
-Contour Plot
-
-Distplot
-
-Residual
-
-Ordinary Least Square (OLS)
-
-Receiver Operating Characteristics (ROC)
-
-Enhanced Prediction Error Analysis
-
-3D Scatter
-
-
+```bash
+git clone https://github.com/yourusername/odyssey.git
+cd odyssey
+pip install -r requirements.txt
+```
+## Requirements
+```bash
+streamlit==1.25.0
+pandas==1.5.1
+plotly==5.13.0
+scikit-image==0.19.3
+numpy==1.24.2
+statsmodels==0.13.5
+openai==0.27.8
+```
