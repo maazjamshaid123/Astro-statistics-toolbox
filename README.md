@@ -62,10 +62,10 @@ You can access Odyssey online through the following link:
 We welcome contributions! Please follow these steps to contribute:
 
 **Fork the repository**
-- Create a new branch ```bash (git checkout -b feature-branch)```.
+- Create a new branch ```(git checkout -b feature-branch)```.
 - Make your changes.
-- Commit your changes ```bash (git commit -am 'Add new feature')```.
-- Push to the branch ```bash (git push origin feature-branch)```.
+- Commit your changes ```(git commit -am 'Add new feature')```.
+- Push to the branch ```(git push origin feature-branch)```.
 - Create a new Pull Request.
 
 ## Contact
