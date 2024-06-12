@@ -56,7 +56,7 @@ openai==0.27.8
 
 ## Access the App
 You can access Odyssey online through the following link:
-![ODYSSEY](https://odyssey.streamlit.app)
+[ODYSSEY](https://odyssey.streamlit.app)
 
 ## Contributing
 We welcome contributions! Please follow these steps to contribute:
@@ -69,6 +69,6 @@ We welcome contributions! Please follow these steps to contribute:
 - Create a new Pull Request.
 
 ## Contact
-For questions or support, please open an issue or contact ![ME](maazjamshaid.123@gmail.com).
+For questions or support, please open an issue or contact [ME](maazjamshaid.123@gmail.com).
 
 
