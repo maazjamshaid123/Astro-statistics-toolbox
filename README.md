@@ -1,4 +1,4 @@
-# Odyssey: Empowering Space Scientists with Data-Driven Solutions
+# AI Research Assistants: Odyssey
 
 ![Odyssey](page_icon.png)
 
