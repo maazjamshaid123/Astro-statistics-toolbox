@@ -1,4 +1,4 @@
-# AI Research Assistants: Odyssey
+# AI Research Assistant for Space Scientists : Odyssey
 
 ![Odyssey](page_icon.png)
 
