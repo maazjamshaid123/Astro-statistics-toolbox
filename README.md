@@ -1,10 +1,7 @@
 # AI Research Assistant for Space Scientists : Odyssey
-
-![Odyssey](https://camo.githubusercontent.com/e0ffb6ffd19761e128412d34199a6955c217dc10d50ad50a9da96de749df0b7b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2532302d2532333134333534432e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d707974686f6e266c6f676f436f6c6f723d7768697465) ![Odyssey](https://camo.githubusercontent.com/59db2dd8055abc28dce5d31d3683e96fc554a59553c632cccebc2832ba648291/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53747265616d6c69742532302d2532334646344234422e7376673f267374796c653d666f722d7468652d6261646765266c6f676f3d53747265616d6c6974266c6f676f436f6c6f723d7768697465)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://odyssey.streamlit.app)
 
 ![Odyssey](page_icon.png)
-
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://odyssey.streamlit.app)
 
 ## Introduction
 
