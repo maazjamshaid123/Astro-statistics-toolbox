@@ -4,7 +4,7 @@
 
 ![Odyssey](page_icon.png)
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)(https://odyssey.streamlit.app)]
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://odyssey.streamlit.app)
 
 ## Introduction
 
