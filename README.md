@@ -4,6 +4,8 @@
 
 ![Odyssey](page_icon.png)
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)(https://odyssey.streamlit.app)]
+
 ## Introduction
 
 Odyssey is an innovative app designed to assist space scientists in the fields of astronomy and astrophysics. Leveraging data-driven approaches such as data analysis, visualization, machine learning, and artificial intelligence, Odyssey provides effective solutions for a wide range of problems encountered by space scientists.
