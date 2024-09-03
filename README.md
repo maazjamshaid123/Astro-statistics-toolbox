@@ -1,4 +1,4 @@
-# AI Research Assistant for Space Scientists : Odyssey
+# OpenAI enabled Astro-Statistics Toolbox: Odyssey
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://odyssey.streamlit.app)
 
 ![Odyssey](page_icon.png)
